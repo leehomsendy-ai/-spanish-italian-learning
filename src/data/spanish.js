@@ -12,8 +12,12 @@
  *   choice     ：單字／文法選擇題（answer 為正確選項的 index）
  *   reorder    ：句子重組（words 為「正確順序」，畫面上會自動打亂）
  *
- * 主題參考雲端硬碟「Espanol」資料夾中的《圖解基礎西班牙語》《帶著西語去旅行》
- * （資料夾內為音檔，文字內容為依其主題重新撰寫）。
+ * 內容來源（雲端硬碟）：
+ *   - 共用資料夾「Jo要學西文」：
+ *       「5. Saber vs. Conocer.pdf」→ 題庫 es-e19~e21, es-e23, es-e26, es-e27
+ *       「6&7. Ser vs. Estar.pdf」  → 題庫 es-e16~e18, es-e22, es-e24, es-e25
+ *   - 「Espanol」資料夾（《圖解基礎西班牙語》《圖解西語王》《帶著西語去旅行》、Español Eco）
+ *     透過 API 看不到任何檔案，對話與文章依這些書的主題（基礎、旅行）自行撰寫。
  */
 
 export default {
@@ -361,6 +365,116 @@ export default {
       options: ['por', 'para'],
       answer: 1,
       explain: 'para 表示目的、對象或接受者（給你的禮物）；por 表示原因、經由、交換或代替。',
+    },
+
+    // ---------- 雲端硬碟講義：Ser vs. Estar ----------
+    {
+      id: 'es-e16',
+      level: 'A1',
+      type: 'choice',
+      prompt: 'Juan ___ triste.',
+      options: ['es', 'está'],
+      answer: 1,
+      explain: '情緒狀態、身體狀況用 estar：Estoy contenta（我很開心）、Juan está triste（Juan 很傷心）、¿Estás cansado?（你累了嗎？）。',
+    },
+    {
+      id: 'es-e17',
+      level: 'A1',
+      type: 'choice',
+      prompt: 'Mis amigos ___ profesores.',
+      options: ['son', 'están'],
+      answer: 0,
+      explain: '職業用 ser：Soy estudiante、Pablo es programador、Mis amigos son profesores。名字、國籍、個性也用 ser。',
+    },
+    {
+      id: 'es-e18',
+      level: 'A1',
+      type: 'reorder',
+      words: ['Esta', 'mesa', 'es', 'de', 'madera.'],
+      zh: '這張桌子是木頭做的。',
+      explain: '材質用「ser de + 材料」：La silla es de plástico（這張椅子是塑膠做的）。',
+    },
+    // ---------- 雲端硬碟講義：Saber vs. Conocer ----------
+    {
+      id: 'es-e19',
+      level: 'A2',
+      type: 'conjugation',
+      sentence: 'No ___ a Juan.',
+      verb: 'conocer, yo',
+      answers: ['conozco'],
+      explain: '「conocer + a + 人」表示認識某人。conocer 的 yo 形式不規則：conozco, conoces, conoce, conocemos, conocéis, conocen。',
+    },
+    {
+      id: 'es-e20',
+      level: 'A2',
+      type: 'conjugation',
+      sentence: '¿___ tocar la guitarra?',
+      verb: 'saber, tú',
+      answers: ['sabes'],
+      explain: '「saber + 原形動詞」表示會不會做某事、有沒有這個能力：No sé cocinar（我不會做菜）、Sabemos cantar（我們會唱歌）。',
+    },
+    {
+      id: 'es-e21',
+      level: 'A2',
+      type: 'conjugation',
+      sentence: 'No ___ quién es Marcos.',
+      verb: 'saber, yo',
+      answers: ['sé'],
+      explain: '「saber + 疑問詞（qué, dónde, quién, cómo…）」表示知道某件事。saber 的 yo 形式不規則：sé（要加重音，以區別代名詞 se）。',
+    },
+    {
+      id: 'es-e22',
+      level: 'A2',
+      type: 'choice',
+      prompt: 'El concierto ___ en la Taipéi Arena.',
+      options: ['está', 'es'],
+      answer: 1,
+      explain: '一般地點、位置用 estar（Estoy en Taiwán），但「活動或事件舉行的地點」是例外，要用 ser：La boda es en España（婚禮在西班牙舉行）。',
+    },
+    {
+      id: 'es-e23',
+      level: 'A2',
+      type: 'choice',
+      prompt: '¿___ usted el sur de Taiwán?（您去過／知道台灣南部嗎？）',
+      options: ['Sabe', 'Conoce'],
+      answer: 1,
+      explain: '「conocer + 地方」表示知道、去過某個地方：Conozco París、Conocemos Barcelona。對地方、人、事物的熟悉用 conocer。',
+    },
+    {
+      id: 'es-e24',
+      level: 'B1',
+      type: 'choice',
+      prompt: 'Mi novio ___ muy guapo hoy.（今天有特別打扮）',
+      options: ['es', 'está'],
+      answer: 1,
+      explain: 'ser 與 estar 都能接 guapo，但意思不同：Mi novio es guapo（天生帥）；Mi novio está guapo hoy（今天特別帥）。',
+    },
+    {
+      id: 'es-e25',
+      level: 'B1',
+      type: 'choice',
+      prompt: 'Ya podemos salir: ___ listos.',
+      options: ['somos', 'estamos'],
+      answer: 1,
+      explain: '有些形容詞搭配 ser 與 estar 意思完全不同：ser listo = 聰明；estar listo = 準備好了。同理 ser aburrido = 很無聊的人；estar aburrido = 感到無聊。',
+    },
+    {
+      id: 'es-e26',
+      level: 'B1',
+      type: 'conjugation',
+      sentence: 'Hoy ___ a la novia de mi amigo.',
+      verb: 'conocer, yo，現在完成式',
+      answers: ['he conocido', 'conocí'],
+      explain: 'conocer 用在過去時態可表示「第一次認識某人」：Hoy he conocido a mis vecinos。西班牙用 hoy 時常用現在完成式（he conocido）；拉丁美洲較常用簡單過去式（conocí）。',
+    },
+    {
+      id: 'es-e27',
+      level: 'B1',
+      type: 'choice',
+      prompt: '¿___ la canción «Cielito lindo»? — Sí, ¡y la canto muy bien!',
+      options: ['Conoces', 'Sabes'],
+      answer: 1,
+      explain: '談論歌曲時兩者都能用但意思不同：¿Sabes la canción…? = 知道而且會唱；¿Conoces la canción…? = 聽過，但不一定會唱。回答說「會唱」，所以用 sabes。',
     },
   ],
 };
