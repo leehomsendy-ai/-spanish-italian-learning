@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Card, EmptyState, LevelBadge, PillTabs, RateToggle, SpeakButton, SpeechNotice } from './ui.jsx';
+import { Card, EmptyState, LevelBadge, ScenarioGrid, sortByLevel, RateToggle, SpeakButton, SpeechNotice } from './ui.jsx';
 
 export default function Dialogues({ data, level, speech, rate, setRate }) {
-  const list = data.dialogues.filter((d) => d.level === level);
-  const [activeId, setActiveId] = useState(list[0]?.id);
+  const list = sortByLevel(data.dialogues);
+  const [activeId, setActiveId] = useState(() => (list.find((x) => x.level === level) || list[0])?.id);
   const [showAll, setShowAll] = useState(false);
   const [revealed, setRevealed] = useState({});
 
@@ -33,11 +33,17 @@ export default function Dialogues({ data, level, speech, rate, setRate }) {
 
   return (
     <div className="space-y-4">
-      <PillTabs
-        items={list.map((d) => ({ id: d.id, label: `${d.scene}｜${d.titleZh}` }))}
-        value={dialogue.id}
-        onChange={setActiveId}
-      />
+      <section>
+        <h2 className="mb-2 text-sm font-semibold text-[var(--muted)]">
+          {list.length} 種情境・目前程度 {level} 以外的項目會淡化顯示，仍可點選
+        </h2>
+        <ScenarioGrid
+          level={level}
+          value={dialogue.id}
+          onChange={setActiveId}
+          items={list.map((x) => ({ id: x.id, level: x.level, tag: x.scene, label: x.titleZh }))}
+        />
+      </section>
 
       <Card className="overflow-hidden">
         <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[var(--border)] px-5 py-4">

@@ -80,12 +80,74 @@ export default {
         { speaker: 'Viaggiatrice', text: 'Grazie, è stato molto gentile.', zh: '謝謝，您真親切。' },
       ],
     },
+    {
+      id: 'it-d4',
+      level: 'A1',
+      title: 'Piacere!',
+      titleZh: '認識新朋友',
+      scene: '自我介紹',
+      lines: [
+        { speaker: 'Luca', text: 'Ciao! Come ti chiami?', zh: '嗨！你叫什麼名字？' },
+        { speaker: 'Mei', text: 'Ciao, mi chiamo Mei. E tu?', zh: '嗨，我叫美。你呢？' },
+        { speaker: 'Luca', text: 'Io sono Luca. Di dove sei?', zh: '我是盧卡。你是哪裡人？' },
+        { speaker: 'Mei', text: 'Sono taiwanese, di Taichung.', zh: '我是台灣人，來自台中。' },
+        { speaker: 'Luca', text: 'Che bello! Sei qui in vacanza?', zh: '真好！你來這裡度假嗎？' },
+        { speaker: 'Mei', text: 'No, sono una studentessa. Studio arte a Firenze.', zh: '不是，我是學生。我在佛羅倫斯念藝術。' },
+        { speaker: 'Luca', text: 'Quanti anni hai?', zh: '你幾歲？' },
+        { speaker: 'Mei', text: 'Ho ventidue anni. E tu, che lavoro fai?', zh: '我二十二歲。那你做什麼工作？' },
+        { speaker: 'Luca', text: 'Faccio il cuoco in un ristorante.', zh: '我在一家餐廳當廚師。' },
+        { speaker: 'Mei', text: 'Piacere di conoscerti!', zh: '很高興認識你！' },
+        { speaker: 'Luca', text: 'Piacere mio! A presto!', zh: '我也很高興！再見！' },
+      ],
+    },
+    {
+      id: 'it-d5',
+      level: 'A2',
+      title: 'Al mercato',
+      titleZh: '在市場買蔬果',
+      scene: '購物',
+      lines: [
+        { speaker: 'Fruttivendolo', text: 'Buongiorno, signora! Cosa le do oggi?', zh: '早安，女士！今天要買什麼？' },
+        { speaker: 'Cliente', text: 'Buongiorno. Vorrei un chilo di pomodori.', zh: '早安。我想要一公斤番茄。' },
+        { speaker: 'Fruttivendolo', text: 'Ecco qua. Sono molto dolci, vengono dalla Sicilia.', zh: '給您。這些很甜，是西西里產的。' },
+        { speaker: 'Cliente', text: 'Quanto costano le fragole?', zh: '草莓多少錢？' },
+        { speaker: 'Fruttivendolo', text: 'Tre euro al cestino.', zh: '一盒三歐元。' },
+        { speaker: 'Cliente', text: 'Allora ne prendo due cestini.', zh: '那我買兩盒。' },
+        { speaker: 'Fruttivendolo', text: 'Altro?', zh: '還要別的嗎？' },
+        { speaker: 'Cliente', text: "Sì, anche mezzo chilo di carote e un po' di lattuga.", zh: '要，還要半公斤紅蘿蔔和一點萵苣。' },
+        { speaker: 'Fruttivendolo', text: 'Basta così?', zh: '這樣就好了嗎？' },
+        { speaker: 'Cliente', text: "Sì, grazie. Quant'è in tutto?", zh: '對，謝謝。總共多少錢？' },
+        { speaker: 'Fruttivendolo', text: 'Sono dieci euro e cinquanta.', zh: '十歐元五十分。' },
+        { speaker: 'Cliente', text: 'Ecco a lei. Buona giornata!', zh: '給您。祝您有美好的一天！' },
+      ],
+    },
+    {
+      id: 'it-d6',
+      level: 'B1',
+      title: 'In farmacia',
+      titleZh: '在藥局買藥',
+      scene: '就醫',
+      lines: [
+        { speaker: 'Farmacista', text: 'Buonasera, mi dica.', zh: '晚安，請說。' },
+        { speaker: 'Cliente', text: 'Buonasera. Ho mal di testa da stamattina e mi sento molto stanco.', zh: '晚安。我從早上開始頭痛，而且覺得很累。' },
+        { speaker: 'Farmacista', text: 'Ha anche la febbre?', zh: '也有發燒嗎？' },
+        { speaker: 'Cliente', text: 'Credo di sì, ma non ho il termometro.', zh: '我想有，但我沒有體溫計。' },
+        { speaker: 'Farmacista', text: 'Ha già preso qualcosa?', zh: '已經吃過什麼藥了嗎？' },
+        { speaker: 'Cliente', text: 'No, niente. Sono in Italia da due giorni e non so cosa comprare.', zh: '沒有，什麼都沒吃。我來義大利兩天，不知道該買什麼。' },
+        { speaker: 'Farmacista', text: 'Le consiglio questo antidolorifico. Ne prenda una compressa ogni sei ore, non più di tre al giorno.', zh: '我建議您這個止痛藥。每六小時吃一錠，一天不超過三錠。' },
+        { speaker: 'Cliente', text: 'Serve la ricetta?', zh: '需要處方箋嗎？' },
+        { speaker: 'Farmacista', text: 'No, è un farmaco da banco. Se domani la febbre non passa, però, è meglio andare dal medico.', zh: '不用，這是成藥。不過如果明天還沒退燒，最好去看醫生。' },
+        { speaker: 'Cliente', text: "D'accordo. Prendo anche un termometro, per favore.", zh: '好的。我也買一支體溫計，麻煩了。' },
+        { speaker: 'Farmacista', text: 'Certo. In tutto sono quattordici euro.', zh: '當然。總共十四歐元。' },
+      ],
+    },
   ],
 
   readings: [
     {
       id: 'it-r1',
       level: 'A1',
+      theme: '飲食文化',
       title: 'Il caffè in Italia',
       titleZh: '義大利的咖啡文化',
       text:
@@ -131,6 +193,7 @@ export default {
     {
       id: 'it-r2',
       level: 'A2',
+      theme: '家庭聚餐',
       title: 'Il pranzo della domenica',
       titleZh: '星期天的家庭午餐',
       text:
@@ -178,6 +241,7 @@ export default {
     {
       id: 'it-r3',
       level: 'B1',
+      theme: '城市文化',
       title: 'Le piazze italiane',
       titleZh: '義大利的廣場',
       text:
@@ -217,6 +281,101 @@ export default {
           options: ['un museo（博物館）', 'un salotto all\'aperto（露天客廳）', 'un mercato（市場）'],
           answer: 1,
           explain: '結尾說廣場是「un vero salotto all\'aperto」—— 真正的露天客廳。',
+        },
+      ],
+    },
+    {
+      id: 'it-r4',
+      level: 'A1',
+      theme: '日常生活',
+      title: 'La mia giornata',
+      titleZh: '我的一天',
+      text:
+        'Mi chiamo Giulia e abito a Bologna. La mattina mi sveglio alle sette. Prima {{faccio}} colazione con un caffè e i biscotti, poi prendo l\'autobus per andare al lavoro. ' +
+        '{{Lavoro}} in un ufficio in centro, dalle nove alle cinque. A pranzo mangio un panino con i colleghi. ' +
+        'Dopo il lavoro {{faccio la spesa}} al supermercato e torno a casa. ' +
+        'La sera {{cucino}} la pasta e {{guardo}} un po\' di televisione. ' +
+        'Il sabato faccio una passeggiata nel parco con il mio cane e la domenica pranzo con la mia famiglia. ' +
+        'Vado a letto alle undici, perché la sera sono sempre molto {{stanca}}!',
+      vocab: {
+        faccio: { lemma: 'fare', pos: '動詞（現在式 io）', zh: '做；fare colazione = 吃早餐' },
+        Lavoro: { lemma: 'lavorare', pos: '動詞（現在式 io）', zh: '工作' },
+        'faccio la spesa': { lemma: 'fare la spesa', pos: '片語', zh: '買菜、採買日用品' },
+        cucino: { lemma: 'cucinare', pos: '動詞（現在式 io）', zh: '煮、做菜' },
+        guardo: { lemma: 'guardare', pos: '動詞（現在式 io）', zh: '看（電視、影片）' },
+        stanca: { lemma: 'stanco', pos: '形容詞（陰性）', zh: '疲累的' },
+      },
+      questions: [
+        {
+          type: 'mc',
+          q: 'Come va al lavoro Giulia?',
+          qZh: 'Giulia 怎麼去上班？',
+          options: ['A piedi（走路）', 'In autobus（搭公車）', 'In macchina（開車）'],
+          answer: 1,
+          explain: '「poi prendo l\'autobus per andare al lavoro」。',
+        },
+        {
+          type: 'tf',
+          q: 'Giulia pranza a casa tutti i giorni.',
+          qZh: 'Giulia 每天都回家吃午餐。',
+          answer: false,
+          explain: '平日她和同事吃三明治（A pranzo mangio un panino con i colleghi），只有星期天和家人吃午餐。',
+        },
+        {
+          type: 'mc',
+          q: 'Cosa fa Giulia il sabato?',
+          qZh: 'Giulia 星期六做什麼？',
+          options: ['Lavora in ufficio（上班）', 'Fa una passeggiata nel parco（在公園散步）', 'Va al mare（去海邊）'],
+          answer: 1,
+          explain: '「Il sabato faccio una passeggiata nel parco con il mio cane」。',
+        },
+      ],
+    },
+    {
+      id: 'it-r5',
+      level: 'A2',
+      theme: '節慶',
+      title: 'Il Carnevale di Venezia',
+      titleZh: '威尼斯嘉年華',
+      text:
+        'Il Carnevale di Venezia è una delle {{feste|festa}} più antiche e famose d\'Italia. Si festeggia ogni anno a febbraio, nei giorni prima della Quaresima. ' +
+        'Durante il Carnevale, migliaia di persone arrivano in città da tutto il mondo. ' +
+        'Molti {{indossano}} costumi eleganti del Settecento e bellissime {{maschere|maschera}} che nascondono il viso. ' +
+        'Nel passato, le maschere permettevano a tutti, ricchi e poveri, di essere {{uguali|uguale}} per qualche giorno. ' +
+        'Uno degli eventi più attesi è il «Volo dell\'Angelo»: una ragazza scende dal campanile di San Marco sopra la piazza piena di gente. ' +
+        'Nelle pasticcerie si vendono dolci tipici, come le frittelle e i galani. ' +
+        'Se visitate Venezia in questo periodo, {{prenotate}} l\'albergo con molto {{anticipo}}!',
+      vocab: {
+        festa: { lemma: 'festa', pos: '名詞 (f.)', zh: '節慶、派對（文中為複數 feste）' },
+        indossano: { lemma: 'indossare', pos: '動詞（現在式 loro）', zh: '穿戴' },
+        maschera: { lemma: 'maschera', pos: '名詞 (f.)', zh: '面具（文中為複數 maschere）' },
+        uguale: { lemma: 'uguale', pos: '形容詞', zh: '平等的、相同的（文中為複數 uguali）' },
+        prenotate: { lemma: 'prenotare', pos: '動詞（命令式 voi）', zh: '預訂' },
+        anticipo: { lemma: 'anticipo', pos: '名詞 (m.)', zh: '提前；con anticipo = 提早' },
+      },
+      questions: [
+        {
+          type: 'mc',
+          q: 'In quale mese si festeggia il Carnevale di Venezia?',
+          qZh: '威尼斯嘉年華在幾月舉行？',
+          options: ['Dicembre', 'Febbraio', 'Luglio'],
+          answer: 1,
+          explain: '「Si festeggia ogni anno a febbraio」—— 每年二月，在大齋期之前。',
+        },
+        {
+          type: 'tf',
+          q: 'Nel passato le maschere rendevano ricchi e poveri uguali per qualche giorno.',
+          qZh: '過去面具讓富人和窮人能平等幾天。',
+          answer: true,
+          explain: '「le maschere permettevano a tutti, ricchi e poveri, di essere uguali per qualche giorno」。',
+        },
+        {
+          type: 'mc',
+          q: 'Che cosa sono le frittelle?',
+          qZh: 'frittelle 是什麼？',
+          options: ['Costumi（服裝）', 'Dolci tipici（傳統甜點）', 'Maschere（面具）'],
+          answer: 1,
+          explain: '「Nelle pasticcerie si vendono dolci tipici, come le frittelle e i galani」。',
         },
       ],
     },

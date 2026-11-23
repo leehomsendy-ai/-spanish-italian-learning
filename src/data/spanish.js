@@ -88,12 +88,74 @@ export default {
         { speaker: 'Dependienta', text: 'Por supuesto.', zh: '當然可以。' },
       ],
     },
+    {
+      id: 'es-d4',
+      level: 'A1',
+      title: 'Encantado de conocerte',
+      titleZh: '認識新朋友',
+      scene: '自我介紹',
+      lines: [
+        { speaker: 'Ana', text: '¡Hola! ¿Cómo te llamas?', zh: '你好！你叫什麼名字？' },
+        { speaker: 'Wei', text: 'Hola, me llamo Wei. ¿Y tú?', zh: '你好，我叫偉。你呢？' },
+        { speaker: 'Ana', text: 'Yo soy Ana. ¿De dónde eres?', zh: '我是安娜。你是哪裡人？' },
+        { speaker: 'Wei', text: 'Soy de Taiwán, de Taipéi.', zh: '我來自台灣，台北。' },
+        { speaker: 'Ana', text: '¡Qué interesante! ¿Qué haces en Madrid?', zh: '好有趣！你在馬德里做什麼？' },
+        { speaker: 'Wei', text: 'Estudio español en una academia.', zh: '我在一間語言學校學西班牙文。' },
+        { speaker: 'Ana', text: 'Hablas muy bien. ¿Cuántos años tienes?', zh: '你說得很好。你幾歲？' },
+        { speaker: 'Wei', text: 'Tengo veinticinco años. ¿Y tú?', zh: '我二十五歲。你呢？' },
+        { speaker: 'Ana', text: 'Yo tengo veintiocho. Soy profesora de inglés.', zh: '我二十八歲，是英文老師。' },
+        { speaker: 'Wei', text: '¡Encantado de conocerte, Ana!', zh: '很高興認識你，安娜！' },
+        { speaker: 'Ana', text: '¡Igualmente!', zh: '我也是！' },
+      ],
+    },
+    {
+      id: 'es-d5',
+      level: 'A2',
+      title: 'En la recepción del hotel',
+      titleZh: '飯店入住',
+      scene: '住宿',
+      lines: [
+        { speaker: 'Recepcionista', text: 'Buenas noches, bienvenido al Hotel Sol. ¿En qué puedo ayudarle?', zh: '晚安，歡迎來到太陽飯店。有什麼可以為您服務的？' },
+        { speaker: 'Cliente', text: 'Buenas noches. Tengo una reserva a nombre de Lin.', zh: '晚安。我有用「林」的名字訂房。' },
+        { speaker: 'Recepcionista', text: 'Un momento… Sí, una habitación doble para tres noches. ¿Me deja su pasaporte, por favor?', zh: '請稍等……有的，雙人房住三晚。可以給我您的護照嗎？' },
+        { speaker: 'Cliente', text: 'Aquí tiene. ¿El desayuno está incluido?', zh: '在這裡。有含早餐嗎？' },
+        { speaker: 'Recepcionista', text: 'Sí, se sirve de siete a diez en el comedor de la primera planta.', zh: '有，早上七點到十點在二樓餐廳供應（西班牙的 primera planta 是台灣的二樓）。' },
+        { speaker: 'Cliente', text: 'Perfecto. ¿Hay wifi en la habitación?', zh: '太好了。房間有 wifi 嗎？' },
+        { speaker: 'Recepcionista', text: 'Sí, la contraseña está en esta tarjeta. Su habitación es la 305, en la tercera planta.', zh: '有，密碼在這張卡片上。您的房間是 305，在四樓。' },
+        { speaker: 'Cliente', text: '¿A qué hora tengo que dejar la habitación?', zh: '我幾點要退房？' },
+        { speaker: 'Recepcionista', text: 'Antes de las doce. Si necesita algo, llame a recepción.', zh: '十二點以前。如果需要任何東西，請打電話到櫃台。' },
+        { speaker: 'Cliente', text: 'Muchas gracias.', zh: '非常感謝。' },
+        { speaker: 'Recepcionista', text: 'A usted. ¡Que descanse!', zh: '不客氣，祝您好好休息！' },
+      ],
+    },
+    {
+      id: 'es-d6',
+      level: 'B1',
+      title: 'En la consulta del médico',
+      titleZh: '看醫生',
+      scene: '就醫',
+      lines: [
+        { speaker: 'Médica', text: 'Buenos días, siéntese. ¿Qué le pasa?', zh: '早安，請坐。您哪裡不舒服？' },
+        { speaker: 'Paciente', text: 'Desde hace tres días me duele mucho la garganta y tengo tos.', zh: '三天前開始喉嚨很痛，而且咳嗽。' },
+        { speaker: 'Médica', text: '¿Ha tenido fiebre?', zh: '有發燒嗎？' },
+        { speaker: 'Paciente', text: 'Sí, anoche tenía treinta y ocho grados.', zh: '有，昨晚三十八度。' },
+        { speaker: 'Médica', text: 'Vamos a ver… Abra la boca, por favor. Tiene la garganta bastante inflamada.', zh: '我看看……請張開嘴巴。您的喉嚨相當發炎。' },
+        { speaker: 'Paciente', text: '¿Es algo grave?', zh: '嚴重嗎？' },
+        { speaker: 'Médica', text: 'No se preocupe, es una infección leve. Le voy a recetar un jarabe y unas pastillas.', zh: '別擔心，是輕微感染。我開糖漿和一些藥片給您。' },
+        { speaker: 'Paciente', text: '¿Cada cuánto tengo que tomar las pastillas?', zh: '藥片多久要吃一次？' },
+        { speaker: 'Médica', text: 'Una cada ocho horas, después de comer, durante cinco días.', zh: '每八小時一顆，飯後吃，連續五天。' },
+        { speaker: 'Paciente', text: '¿Puedo ir a trabajar mañana?', zh: '我明天可以去上班嗎？' },
+        { speaker: 'Médica', text: 'Es mejor que descanse un par de días y que beba mucha agua.', zh: '最好休息個兩天，並多喝水。' },
+        { speaker: 'Paciente', text: 'Entendido. Muchas gracias, doctora.', zh: '了解。非常感謝，醫生。' },
+      ],
+    },
   ],
 
   readings: [
     {
       id: 'es-r1',
       level: 'A1',
+      theme: '生活作息',
       title: 'Los horarios en España',
       titleZh: '西班牙人的作息',
       text:
@@ -138,6 +200,7 @@ export default {
     {
       id: 'es-r2',
       level: 'A2',
+      theme: '飲食文化',
       title: 'Ir de tapas',
       titleZh: '吃 Tapas 的文化',
       text:
@@ -184,6 +247,7 @@ export default {
     {
       id: 'es-r3',
       level: 'B1',
+      theme: '旅遊',
       title: 'El Camino de Santiago',
       titleZh: '聖雅各朝聖之路',
       text:
@@ -225,6 +289,102 @@ export default {
           options: ['Unos 100 km', 'Unos 300 km', 'Unos 800 km'],
           answer: 2,
           explain: '「a lo largo de unos ochocientos kilómetros」—— 約 800 公里。',
+        },
+      ],
+    },
+    {
+      id: 'es-r4',
+      level: 'A1',
+      theme: '家庭',
+      title: 'Mi familia',
+      titleZh: '我的家人',
+      text:
+        'Me llamo Carmen y vivo en Sevilla con mi familia. Somos cinco personas. Mi {{padre}} se llama Antonio y es médico. ' +
+        'Mi {{madre}}, Lucía, es profesora en un colegio. Tengo dos {{hermanos|hermano}}: Pablo tiene doce años y Marta tiene diecisiete. ' +
+        'Yo tengo veinte años y estudio en la universidad. También tenemos un perro muy simpático que se llama Toby. ' +
+        'Los domingos comemos en casa de mis {{abuelos|abuelo}}, que viven en un pueblo cerca de Sevilla. ' +
+        'Mi abuela {{cocina}} muy bien: su gazpacho es el mejor del mundo. Después de comer, mi abuelo y mi hermano juegan a las cartas. ' +
+        'Me {{gusta}} mucho pasar tiempo con mi familia.',
+      vocab: {
+        padre: { lemma: 'padre', pos: '名詞 (m.)', zh: '父親' },
+        madre: { lemma: 'madre', pos: '名詞 (f.)', zh: '母親' },
+        hermano: { lemma: 'hermano', pos: '名詞 (m.)', zh: '兄弟（複數 hermanos 可泛指兄弟姊妹）' },
+        abuelo: { lemma: 'abuelo', pos: '名詞 (m.)', zh: '祖父、外祖父（複數 abuelos = 祖父母）' },
+        cocina: { lemma: 'cocinar', pos: '動詞（現在式 él/ella）', zh: '做菜、烹飪' },
+        gusta: { lemma: 'gustar', pos: '動詞（現在式 3 單）', zh: '喜歡（me gusta + 事物／原形動詞）' },
+      },
+      questions: [
+        {
+          type: 'mc',
+          q: '¿Cuántas personas hay en la familia de Carmen?',
+          qZh: 'Carmen 家有幾個人？',
+          options: ['Tres', 'Cinco', 'Siete'],
+          answer: 1,
+          explain: '「Somos cinco personas.」—— 父母、Carmen 和兩個兄弟姊妹，共五人。',
+        },
+        {
+          type: 'tf',
+          q: 'Carmen tiene un gato.',
+          qZh: 'Carmen 家養了一隻貓。',
+          answer: false,
+          explain: '他們養的是一隻狗（un perro）Toby。',
+        },
+        {
+          type: 'mc',
+          q: '¿Qué hace la familia los domingos?',
+          qZh: '這家人星期天做什麼？',
+          options: ['Va a la playa（去海邊）', 'Come en casa de los abuelos（去祖父母家吃飯）', 'Juega al fútbol（踢足球）'],
+          answer: 1,
+          explain: '「Los domingos comemos en casa de mis abuelos」。',
+        },
+      ],
+    },
+    {
+      id: 'es-r5',
+      level: 'A2',
+      theme: '節慶',
+      title: 'Las Fallas de Valencia',
+      titleZh: '瓦倫西亞火節',
+      text:
+        'Cada año, del quince al diecinueve de marzo, Valencia celebra las Fallas, una de las {{fiestas|fiesta}} más famosas de España. ' +
+        'Durante meses, los artistas de cada barrio construyen enormes figuras de cartón y madera llamadas «ninots». ' +
+        'Muchas son {{divertidas|divertido}} y critican a políticos o a personajes famosos. ' +
+        'Durante la fiesta, las calles se llenan de música, flores y {{petardos|petardo}}. ' +
+        'Todos los días a las dos de la tarde hay una «mascletà» en la plaza del Ayuntamiento: un espectáculo de petardos muy ruidoso. ' +
+        'La última noche, la «Cremà», los valencianos {{queman}} casi todas las figuras. ' +
+        'Solo se {{salva}} un ninot, elegido por votación popular, que se guarda en un museo. ' +
+        'Es una noche mágica, pero también un poco triste, porque el trabajo de todo un año {{desaparece}} en pocos minutos.',
+      vocab: {
+        fiesta: { lemma: 'fiesta', pos: '名詞 (f.)', zh: '節慶、派對（文中為複數）' },
+        divertido: { lemma: 'divertido', pos: '形容詞', zh: '有趣的、好笑的（文中為陰性複數）' },
+        petardo: { lemma: 'petardo', pos: '名詞 (m.)', zh: '鞭炮（文中為複數）' },
+        queman: { lemma: 'quemar', pos: '動詞（現在式 ellos）', zh: '燒、焚燒' },
+        salva: { lemma: 'salvarse', pos: '反身動詞（現在式 3 單）', zh: '倖免、被保留下來' },
+        desaparece: { lemma: 'desaparecer', pos: '動詞（現在式 3 單）', zh: '消失' },
+      },
+      questions: [
+        {
+          type: 'mc',
+          q: '¿Cuándo se celebran las Fallas?',
+          qZh: '火節在什麼時候舉行？',
+          options: ['En enero', 'En marzo', 'En agosto'],
+          answer: 1,
+          explain: '「del quince al diecinueve de marzo」—— 每年三月十五日到十九日。',
+        },
+        {
+          type: 'tf',
+          q: 'Los valencianos queman todas las figuras sin excepción.',
+          qZh: '瓦倫西亞人會把所有人偶全部燒掉，沒有例外。',
+          answer: false,
+          explain: '「Solo se salva un ninot」—— 有一個由民眾票選的人偶會保留下來，收藏在博物館。',
+        },
+        {
+          type: 'mc',
+          q: '¿Qué es la «mascletà»?',
+          qZh: '「mascletà」是什麼？',
+          options: ['Un desfile de flores（花車遊行）', 'Un espectáculo de petardos（鞭炮表演）', 'Un museo（博物館）'],
+          answer: 1,
+          explain: '「un espectáculo de petardos muy ruidoso」—— 每天下午兩點在市政廳廣場的鞭炮秀。',
         },
       ],
     },

@@ -159,3 +159,38 @@ export function PillTabs({ items, value, onChange }) {
     </div>
   );
 }
+
+const LEVEL_ORDER = { A1: 0, A2: 1, B1: 2 };
+export const sortByLevel = (items) => [...items].sort((a, b) => LEVEL_ORDER[a.level] - LEVEL_ORDER[b.level]);
+
+/** 情境／主題清單：列出所有項目，目前難度的項目正常顯示，其餘淡化 */
+export function ScenarioGrid({ items, value, onChange, level }) {
+  return (
+    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+      {items.map((it) => {
+        const active = it.id === value;
+        const other = it.level !== level;
+        return (
+          <button
+            key={it.id}
+            onClick={() => onChange(it.id)}
+            aria-pressed={active}
+            className={`min-w-0 rounded-xl border px-3 py-2.5 text-left transition-colors ${
+              active
+                ? 'border-[var(--accent)] bg-[var(--accent-soft)]'
+                : 'border-[var(--border)] bg-[var(--surface)] hover:border-[var(--accent)]'
+            } ${other && !active ? 'opacity-55 hover:opacity-100' : ''}`}
+          >
+            <span className="flex items-center gap-1.5">
+              <LevelBadge level={it.level} />
+              <span className={`text-xs font-semibold ${active ? 'text-[var(--accent)]' : 'text-[var(--muted)]'}`}>
+                {it.tag}
+              </span>
+            </span>
+            <span className="mt-1 block truncate text-sm font-medium">{it.label}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}

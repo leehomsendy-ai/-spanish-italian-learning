@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { Card, EmptyState, Feedback, LevelBadge, PillTabs, RateToggle, SpeakButton, SpeechNotice } from './ui.jsx';
+import { Card, EmptyState, Feedback, LevelBadge, ScenarioGrid, sortByLevel, RateToggle, SpeakButton, SpeechNotice } from './ui.jsx';
 
 // 解析 {{顯示文字}} 或 {{顯示文字|vocab鍵值}}
 const TOKEN = /\{\{([^}|]+)(?:\|([^}]+))?\}\}/g;
@@ -19,8 +19,8 @@ function parse(text) {
 const plain = (text) => text.replace(TOKEN, '$1');
 
 export default function Readings({ data, level, speech, rate, setRate }) {
-  const list = data.readings.filter((r) => r.level === level);
-  const [activeId, setActiveId] = useState(list[0]?.id);
+  const list = sortByLevel(data.readings);
+  const [activeId, setActiveId] = useState(() => (list.find((x) => x.level === level) || list[0])?.id);
   const reading = list.find((r) => r.id === activeId) || list[0];
   const lang = data.meta.speechLang;
 
@@ -33,11 +33,17 @@ export default function Readings({ data, level, speech, rate, setRate }) {
 
   return (
     <div className="space-y-4">
-      <PillTabs
-        items={list.map((r) => ({ id: r.id, label: r.titleZh }))}
-        value={reading.id}
-        onChange={setActiveId}
-      />
+      <section>
+        <h2 className="mb-2 text-sm font-semibold text-[var(--muted)]">
+          {list.length} 種主題・目前程度 {level} 以外的項目會淡化顯示，仍可點選
+        </h2>
+        <ScenarioGrid
+          level={level}
+          value={reading.id}
+          onChange={setActiveId}
+          items={list.map((x) => ({ id: x.id, level: x.level, tag: x.theme, label: x.titleZh }))}
+        />
+      </section>
 
       <Card className="overflow-hidden">
         <div className="flex items-start justify-between gap-3 border-b border-[var(--border)] px-5 py-4">
