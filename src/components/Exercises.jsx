@@ -58,7 +58,7 @@ export default function Exercises({ data, level }) {
 
   return (
     <div className="space-y-4">
-      <StatsBar stats={stats} onReset={() => confirm('確定要清除此語言的所有答題紀錄嗎？') && resetAll()} />
+      <StatsBar stats={stats} onReset={resetAll} />
 
       {finished ? (
         <Card className="px-5 py-10 text-center">
@@ -133,6 +133,7 @@ function correctAnswerText(ex) {
 }
 
 function StatsBar({ stats, onReset }) {
+  const [confirming, setConfirming] = useState(false);
   const pct = (c, a) => (a ? Math.round((c / a) * 100) : 0);
   const items = [
     { label: '本次答對率', value: `${pct(stats.sessionCorrect, stats.sessionAnswered)}%`, sub: `${stats.sessionCorrect}/${stats.sessionAnswered}` },
@@ -151,10 +152,28 @@ function StatsBar({ stats, onReset }) {
           </Card>
         ))}
       </div>
-      <div className="mt-1.5 text-right">
-        <button onClick={onReset} className="text-xs text-[var(--muted)] hover:text-[var(--bad)]">
-          清除紀錄
-        </button>
+      <div className="mt-1.5 flex justify-end gap-3 text-xs">
+        {confirming ? (
+          <>
+            <span className="text-[var(--muted)]">確定清除此語言的所有紀錄？</span>
+            <button
+              onClick={() => {
+                onReset();
+                setConfirming(false);
+              }}
+              className="font-medium text-[var(--bad)]"
+            >
+              清除
+            </button>
+            <button onClick={() => setConfirming(false)} className="text-[var(--muted)]">
+              取消
+            </button>
+          </>
+        ) : (
+          <button onClick={() => setConfirming(true)} className="text-[var(--muted)] hover:text-[var(--bad)]">
+            清除紀錄
+          </button>
+        )}
       </div>
     </div>
   );

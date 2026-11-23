@@ -24,7 +24,7 @@
   --accent-soft: #e1f1ea;
 }
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #1b1c1e;
     --surface: #242528;
     --surface-2: #2c2e32;
@@ -38,11 +38,32 @@
     --accent: #f08a4b;
     --accent-soft: #3a2a20;
     --mark: #4a4120;
+    color-scheme: dark;
   }
-  :root[data-lang="it"] {
+  :root:not([data-theme="light"])[data-lang="it"] {
     --accent: #5cc79c;
     --accent-soft: #1f342b;
   }
+}
+:root[data-theme="dark"] {
+    --bg: #1b1c1e;
+    --surface: #242528;
+    --surface-2: #2c2e32;
+    --border: #393b40;
+    --text: #e8e6e1;
+    --muted: #a19d94;
+    --good: #6cc792;
+    --good-bg: #1f3428;
+    --bad: #ec8a83;
+    --bad-bg: #3a2322;
+    --accent: #f08a4b;
+    --accent-soft: #3a2a20;
+    --mark: #4a4120;
+    color-scheme: dark;
+}
+:root[data-theme="dark"][data-lang="it"] {
+    --accent: #5cc79c;
+    --accent-soft: #1f342b;
 }
 
 html { background: var(--bg); color: var(--text); }
