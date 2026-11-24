@@ -12,7 +12,9 @@
  *   choice     ：單字／文法選擇題（answer 為正確選項的 index）
  *   reorder    ：句子重組（words 為「正確順序」，畫面上會自動打亂）
  *
- * 內容來源（雲端硬碟）：
+ * 內容來源：
+ *   - 講義「西文A1旅遊對話：解答＋動詞變化＋過去式與進行式」→ spanish-a1-travel.js
+ * 雲端硬碟：
  *   - 共用資料夾「Jo要學西文」：
  *       「5. Saber vs. Conocer.pdf」→ 題庫 es-e19~e21, es-e23, es-e26, es-e27
  *       「6&7. Ser vs. Estar.pdf」  → 題庫 es-e16~e18, es-e22, es-e24, es-e25
@@ -20,7 +22,9 @@
  *     透過 API 看不到任何檔案，對話與文章依這些書的主題（基礎、旅行）自行撰寫。
  */
 
-export default {
+import { travelDialogues, travelExercises, verbs } from './spanish-a1-travel.js';
+
+const spanish = {
   meta: {
     code: 'es',
     name: 'Español',
@@ -638,3 +642,10 @@ export default {
     },
   ],
 };
+
+// 講義「西文A1旅遊對話」：7 段對話、動詞變化表與練習題（見 spanish-a1-travel.js）
+spanish.dialogues.push(...travelDialogues);
+spanish.exercises.push(...travelExercises);
+spanish.verbs = verbs;
+
+export default spanish;

@@ -4,6 +4,7 @@ import { Segmented } from './ui.jsx';
 export const MODULES = [
   { id: 'dialogues', label: '情境對話', sub: { es: 'Diálogos', it: 'Dialoghi' }, icon: '💬' },
   { id: 'readings', label: '短文閱讀', sub: { es: 'Lecturas', it: 'Letture' }, icon: '📖' },
+  { id: 'verbs', label: '動詞表', sub: { es: 'Verbos', it: 'Verbi' }, icon: '📋' },
   { id: 'exercises', label: '互動題庫', sub: { es: 'Ejercicios', it: 'Esercizi' }, icon: '✏️' },
 ];
 
@@ -53,8 +54,8 @@ export default function Header({ lang, setLang, level, setLevel, module, setModu
                     : 'border-transparent text-[var(--muted)] hover:text-[var(--text)]'
                 }`}
               >
-                <span className="text-sm font-semibold">
-                  <span className="mr-1" aria-hidden="true">
+                <span className="whitespace-nowrap text-sm font-semibold">
+                  <span className="mr-1 hidden min-[420px]:inline" aria-hidden="true">
                     {m.icon}
                   </span>
                   {m.label}

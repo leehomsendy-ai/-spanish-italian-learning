@@ -23,7 +23,7 @@ export default function Dialogues({ data, level, speech, rate, setRate }) {
   const playAll = () => {
     if (playingAll) return speech.stop();
     speech.speakSequence(
-      dialogue.lines.map((l, i) => ({ id: ids[i], text: l.text })),
+      dialogue.lines.map((l, i) => ({ id: ids[i], text: l.text })).filter((x) => x.text),
       lang,
       rate,
     );
@@ -51,6 +51,9 @@ export default function Dialogues({ data, level, speech, rate, setRate }) {
             <div className="mb-1 flex items-center gap-2">
               <LevelBadge level={dialogue.level} />
               <span className="text-xs text-[var(--muted)]">情境：{dialogue.scene}</span>
+              {dialogue.source && (
+                <span className="rounded bg-[var(--surface-2)] px-1.5 py-0.5 text-[11px] text-[var(--muted)]">📄 講義</span>
+              )}
             </div>
             <h2 className="text-lg font-bold">{dialogue.title}</h2>
             <p className="text-sm text-[var(--muted)]">{dialogue.titleZh}</p>
@@ -64,6 +67,9 @@ export default function Dialogues({ data, level, speech, rate, setRate }) {
           </button>
         </div>
 
+        {dialogue.note && (
+          <p className="border-b border-[var(--border)] px-5 py-3 text-sm leading-relaxed text-[var(--muted)]">💡 {dialogue.note}</p>
+        )}
         <div className="flex flex-wrap items-center justify-between gap-3 bg-[var(--surface-2)] px-5 py-2.5">
           <RateToggle rate={rate} onChange={setRate} />
           <label className="flex cursor-pointer items-center gap-2 text-sm text-[var(--muted)]">
@@ -82,6 +88,12 @@ export default function Dialogues({ data, level, speech, rate, setRate }) {
 
         <ol className="divide-y divide-[var(--border)]">
           {dialogue.lines.map((line, i) => {
+            if (line.stage)
+              return (
+                <li key={i} className="bg-[var(--surface-2)] px-5 py-2 text-center text-sm italic text-[var(--muted)]">
+                  （{line.stage}・{line.zh}）
+                </li>
+              );
             const visible = showAll || revealed[i];
             const active = speech.speakingId === ids[i];
             return (
@@ -116,7 +128,65 @@ export default function Dialogues({ data, level, speech, rate, setRate }) {
         </ol>
       </Card>
 
+      {dialogue.questions && (
+        <QA key={dialogue.id} questions={dialogue.questions} speech={speech} lang={lang} rate={rate} />
+      )}
+
       <SpeechNotice speech={speech} lang={lang} langName={data.meta.nameZh} />
     </div>
+  );
+}
+
+function QA({ questions, speech, lang, rate }) {
+  const [open, setOpen] = useState({});
+  const allOpen = questions.every((_, i) => open[i]);
+  const toggleAll = () => setOpen(allOpen ? {} : Object.fromEntries(questions.map((_, i) => [i, true])));
+
+  return (
+    <Card className="px-5 py-4">
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <div>
+          <h3 className="font-bold">問答練習</h3>
+          <p className="text-xs text-[var(--muted)]">先自己用完整句子回答，再點「看解答」對照。</p>
+        </div>
+        <button onClick={toggleAll} className="shrink-0 text-sm text-[var(--accent)] hover:underline">
+          {allOpen ? '全部收起' : '全部展開'}
+        </button>
+      </div>
+      <ol className="space-y-3">
+        {questions.map((item, i) => {
+          const id = `qa-${i}`;
+          const active = speech.speakingId === id;
+          return (
+            <li key={i} className="rounded-xl border border-[var(--border)] px-4 py-3">
+              <p className="font-medium">
+                {i + 1}. {item.q}
+              </p>
+              {open[i] ? (
+                <div className="mt-2 flex items-start gap-2 rounded-lg bg-[var(--good-bg)] px-3 py-2">
+                  <SpeakButton
+                    active={active}
+                    disabled={!speech.supported}
+                    label={`朗讀：${item.a}`}
+                    onClick={() => (active ? speech.stop() : speech.speak(id, item.a, lang, rate))}
+                  />
+                  <div className="min-w-0">
+                    <p className="font-medium text-[var(--good)]">{item.a}</p>
+                    <p className="text-sm text-[var(--muted)]">{item.zh}</p>
+                  </div>
+                </div>
+              ) : (
+                <button
+                  onClick={() => setOpen((o) => ({ ...o, [i]: true }))}
+                  className="mt-2 rounded-md bg-[var(--surface-2)] px-2.5 py-1 text-xs text-[var(--muted)] hover:text-[var(--text)]"
+                >
+                  看解答
+                </button>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </Card>
   );
 }
