@@ -47,6 +47,8 @@ export default function App() {
       </main>
       <footer className="pb-8 text-center text-xs text-[var(--muted)]">
         資料檔位於 <code>src/data/</code>，可自行擴充對話、文章與題庫。
+        <br />
+        版本：{__BUILD__}
       </footer>
     </div>
   );
