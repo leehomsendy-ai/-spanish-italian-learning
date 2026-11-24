@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Card, EmptyState, LevelBadge, ScenarioGrid, sortByLevel, RateToggle, SpeakButton, SpeechNotice } from './ui.jsx';
+import { Card, EmptyState, LevelBadge, ScenarioGrid, sortByLevel, RateToggle, SpeakButton, SpeechNotice, TopicVocab } from './ui.jsx';
+import topicVocab from '../data/topic-vocab.js';
 
 export default function Dialogues({ data, level, speech, rate, setRate }) {
   const list = sortByLevel(data.dialogues);
@@ -131,6 +132,8 @@ export default function Dialogues({ data, level, speech, rate, setRate }) {
       {dialogue.questions && (
         <QA key={dialogue.id} questions={dialogue.questions} speech={speech} lang={lang} rate={rate} />
       )}
+
+      <TopicVocab groups={topicVocab[dialogue.id]} idPrefix={dialogue.id} speech={speech} lang={lang} rate={rate} />
 
       <SpeechNotice speech={speech} lang={lang} langName={data.meta.nameZh} />
     </div>

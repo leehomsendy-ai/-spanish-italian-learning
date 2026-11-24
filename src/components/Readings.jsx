@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { Card, EmptyState, Feedback, LevelBadge, ScenarioGrid, sortByLevel, RateToggle, SpeakButton, SpeechNotice } from './ui.jsx';
+import { Card, EmptyState, Feedback, LevelBadge, ScenarioGrid, sortByLevel, RateToggle, SpeakButton, SpeechNotice, TopicVocab } from './ui.jsx';
+import topicVocab from '../data/topic-vocab.js';
 
 // 解析 {{顯示文字}} 或 {{顯示文字|vocab鍵值}}
 const TOKEN = /\{\{([^}|]+)(?:\|([^}]+))?\}\}/g;
@@ -70,6 +71,8 @@ export default function Readings({ data, level, speech, rate, setRate }) {
       </Card>
 
       <Questions key={reading.id} questions={reading.questions} />
+
+      <TopicVocab groups={topicVocab[reading.id]} idPrefix={reading.id} speech={speech} lang={lang} rate={rate} />
 
       <SpeechNotice speech={speech} lang={lang} langName={data.meta.nameZh} />
     </div>

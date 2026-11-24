@@ -3,7 +3,7 @@
  * ------------------------------------------------------------
  * - travelDialogues：7 段對話（含問答題與解答），併入 spanish.js 的 dialogues
  * - verbs         ：動詞變化表，顯示在「動詞表」模組
- * - travelExercises：依講義內容出的練習題，併入題庫
+ * - travelExercises：依講義內容出的練習題（25 題），併入題庫
  *
  * 對話行若為 { stage: '…' }，代表場景說明（不朗讀）。
  * questions：{ q 問題, a 解答, zh 中文 }，畫面上可逐題展開解答。
@@ -132,7 +132,7 @@ export const travelDialogues = [
   },
   {
     id: 'es-t6',
-    level: 'A1',
+    level: 'A2',
     source: SOURCE,
     title: 'El fin de semana en Sevilla',
     titleZh: '塞維亞的週末（簡單過去式）',
@@ -254,7 +254,7 @@ export const verbs = [
   },
   {
     id: 'es-v2',
-    level: 'A1',
+    level: 'A2',
     source: SOURCE,
     title: 'Pretérito indefinido',
     titleZh: '簡單過去式（對話 6）',
@@ -308,51 +308,234 @@ export const verbs = [
   },
 ];
 
+// es-e28～es-e47：另一個版本依同一份講義出的題目（已合併）；es-t-e*：補充題
 export const travelExercises = [
   {
-    id: 'es-t-e1',
-    level: 'A1',
-    type: 'conjugation',
-    sentence: '¿Cuánto ___ esos zapatos?',
-    verb: 'costar',
-    answers: ['cuestan'],
-    explain: 'costar 是 o→ue 變音動詞：cuesto, cuestas, cuesta, costamos, costáis, cuestan。主詞 esos zapatos 是複數，所以用 cuestan。（講義・對話 3）',
+    "id": "es-e28",
+    "level": "A1",
+    "type": "conjugation",
+    "sentence": "Perdone, ¿cómo ___ a la estación de tren?",
+    "verb": "ir, yo",
+    "answers": [
+      "voy"
+    ],
+    "explain": "ir 全不規則：voy, vas, va, vamos, vais, van。"
   },
   {
-    id: 'es-t-e2',
-    level: 'A1',
-    type: 'conjugation',
-    sentence: '___ todo recto y en la segunda calle gire a la derecha.',
-    verb: 'seguir，usted 祈使句',
-    answers: ['siga'],
-    explain: '祈使句口訣：從 yo 現在式去掉 -o，-er/-ir 動詞換成 -a。seguir → sigo → siga。（講義・對話 1）',
+    "id": "es-e29",
+    "level": "A1",
+    "type": "conjugation",
+    "sentence": "¿Cuánto ___ esta blusa?",
+    "verb": "costar",
+    "answers": [
+      "cuesta"
+    ],
+    "explain": "costar 為 o→ue 變音動詞：cuesto, cuestas, cuesta, costamos, costáis, cuestan。"
   },
   {
-    id: 'es-t-e3',
-    level: 'A1',
-    type: 'conjugation',
-    sentence: '¿Qué ___ (tú) el fin de semana?',
-    verb: 'hacer，過去式',
-    answers: ['hiciste'],
-    explain: 'hacer 的簡單過去式不規則，詞根變 hic-：hice, hiciste, hizo, hicimos, hicisteis, hicieron。（講義・對話 6）',
+    "id": "es-e30",
+    "level": "A1",
+    "type": "conjugation",
+    "sentence": "Voy el lunes y ___ el miércoles.",
+    "verb": "volver, yo",
+    "answers": [
+      "vuelvo"
+    ],
+    "explain": "volver 為 o→ue 變音動詞：vuelvo, vuelves, vuelve, volvemos, volvéis, vuelven。"
   },
   {
-    id: 'es-t-e4',
-    level: 'A1',
-    type: 'conjugation',
-    sentence: 'Mi hermana ___ jamón en el bar.',
-    verb: 'pedir，過去式',
-    answers: ['pidió'],
-    explain: 'pedir 的過去式只有第三人稱 e→i：pedí, pediste, pidió, pedimos, pedisteis, pidieron。（講義・對話 6）',
+    "id": "es-e31",
+    "level": "A1",
+    "type": "conjugation",
+    "sentence": "Es bonita, pero es pequeña. ¿___ otra talla?",
+    "verb": "tener, usted",
+    "answers": [
+      "tiene"
+    ],
+    "explain": "tener：yo 形式 -go，其餘 e→ie：tengo, tienes, tiene, tenemos, tenéis, tienen。usted 用第三人稱。"
   },
   {
-    id: 'es-t-e5',
-    level: 'A1',
-    type: 'conjugation',
-    sentence: 'Compré un abanico y ___ con tarjeta.',
-    verb: 'pagar，yo 過去式',
-    answers: ['pagué'],
-    explain: 'pagar 是規則動詞，但 yo 要拼寫成 pagué（g→gu），才能保留 /g/ 的發音。（講義・對話 6）',
+    "id": "es-e32",
+    "level": "A1",
+    "type": "conjugation",
+    "sentence": "¿Me ___ traer un agua con gas?",
+    "verb": "poder, usted",
+    "answers": [
+      "puede"
+    ],
+    "explain": "poder 為 o→ue 變音動詞：puedo, puedes, puede, podemos, podéis, pueden。"
+  },
+  {
+    "id": "es-e33",
+    "level": "A1",
+    "type": "conjugation",
+    "sentence": "Buenos días. ¿Qué les ___?",
+    "verb": "poner, yo",
+    "answers": [
+      "pongo"
+    ],
+    "explain": "poner 的 yo 形式不規則 -go：pongo, pones, pone, ponemos, ponéis, ponen。"
+  },
+  {
+    "id": "es-e34",
+    "level": "A1",
+    "type": "conjugation",
+    "sentence": "El huésped ___ una toalla más.",
+    "verb": "pedir",
+    "answers": [
+      "pide"
+    ],
+    "explain": "pedir 為 e→i 變音動詞：pido, pides, pide, pedimos, pedís, piden。"
+  },
+  {
+    "id": "es-e35",
+    "level": "A1",
+    "type": "choice",
+    "prompt": "Perdone, ¿cómo voy a la estación? — ___ todo recto y en la segunda calle gire a la derecha.",
+    "options": [
+      "Sigue",
+      "Siga",
+      "Sigo"
+    ],
+    "answer": 1,
+    "explain": "usted 尊稱祈使句：從 yo 現在式 sigo 去掉 -o，-er/-ir 動詞換成 -a → siga。-ar 動詞則換成 -e（giro → gire）。"
+  },
+  {
+    "id": "es-e36",
+    "level": "A1",
+    "type": "choice",
+    "prompt": "Camarero, ___ unos churros, por favor.（請帶來）",
+    "options": [
+      "trae",
+      "traiga",
+      "traigo"
+    ],
+    "answer": 1,
+    "explain": "traer 的 yo 形式是 traigo → 去 -o 加 -a → traiga（usted 祈使句）。"
+  },
+  {
+    "id": "es-e37",
+    "level": "A1",
+    "type": "conjugation",
+    "sentence": "Estoy ___ un café en una terraza.",
+    "verb": "tomar，副動詞",
+    "answers": [
+      "tomando"
+    ],
+    "explain": "現在進行式 = estar＋副動詞。-ar 動詞 → -ando：tomar → tomando。"
+  },
+  {
+    "id": "es-e38",
+    "level": "A1",
+    "type": "conjugation",
+    "sentence": "Sofía ___ sacando fotos de los azulejos.",
+    "verb": "estar",
+    "answers": [
+      "está"
+    ],
+    "explain": "進行式中 estar 跟著主詞變：estoy, estás, está, estamos, estáis, están；副動詞永遠不變。"
+  },
+  {
+    "id": "es-e39",
+    "level": "A1",
+    "type": "conjugation",
+    "sentence": "Estamos ___ churros con chocolate.",
+    "verb": "comer，副動詞",
+    "answers": [
+      "comiendo"
+    ],
+    "explain": "-er/-ir 動詞 → -iendo：comer → comiendo、hacer → haciendo。"
+  },
+  {
+    "id": "es-e40",
+    "level": "A1",
+    "type": "choice",
+    "prompt": "«Estamos comiendo churros con chocolate. ¡Están buenísimos!» 這裡的 están 是什麼用法？",
+    "options": [
+      "現在進行式",
+      "表示吃起來的狀態（很好吃）"
+    ],
+    "answer": 1,
+    "explain": "¡Están buenísimos! 的 están 是 estar＋形容詞，描述「吃起來很好吃」，不是進行式（後面沒有副動詞）。"
+  },
+  {
+    "id": "es-e41",
+    "level": "A2",
+    "type": "conjugation",
+    "sentence": "El fin de semana ___ a Sevilla con mi hermana.",
+    "verb": "ir, yo，簡單過去式",
+    "answers": [
+      "fui"
+    ],
+    "explain": "ir 與 ser 的簡單過去式同形且不規則：fui, fuiste, fue, fuimos, fuisteis, fueron。"
+  },
+  {
+    "id": "es-e42",
+    "level": "A2",
+    "type": "conjugation",
+    "sentence": "¡Hola, Pablo! ¿Qué ___ el fin de semana?",
+    "verb": "hacer, tú，簡單過去式",
+    "answers": [
+      "hiciste"
+    ],
+    "explain": "hacer 簡單過去式不規則 hic-：hice, hiciste, hizo, hicimos, hicisteis, hicieron。"
+  },
+  {
+    "id": "es-e43",
+    "level": "A2",
+    "type": "conjugation",
+    "sentence": "Yo pedí una tortilla y mi hermana ___ jamón.",
+    "verb": "pedir，簡單過去式",
+    "answers": [
+      "pidió"
+    ],
+    "explain": "pedir 簡單過去式在第三人稱 e→i：pedí, pediste, pidió, pedimos, pedisteis, pidieron。"
+  },
+  {
+    "id": "es-e44",
+    "level": "A2",
+    "type": "conjugation",
+    "sentence": "Compré un abanico en el mercado. ___ con tarjeta.",
+    "verb": "pagar, yo，簡單過去式",
+    "answers": [
+      "pagué"
+    ],
+    "explain": "pagar 的 yo 形式拼寫 g→gu 以保留發音：pagué, pagaste, pagó, pagamos, pagasteis, pagaron。"
+  },
+  {
+    "id": "es-e45",
+    "level": "A2",
+    "type": "conjugation",
+    "sentence": "El domingo ___ un paseo en barco por el río.",
+    "verb": "dar, yo，簡單過去式",
+    "answers": [
+      "di"
+    ],
+    "explain": "dar 簡單過去式不規則且無重音：di, diste, dio, dimos, disteis, dieron。"
+  },
+  {
+    "id": "es-e46",
+    "level": "A2",
+    "type": "conjugation",
+    "sentence": "Primero visitamos la Catedral y ___ a la Giralda.",
+    "verb": "subir, nosotros，簡單過去式",
+    "answers": [
+      "subimos"
+    ],
+    "explain": "規則 -ir：-í, -iste, -ió, -imos, -isteis, -ieron。nosotros 形式與現在式相同，靠上下文判斷。"
+  },
+  {
+    "id": "es-e47",
+    "level": "A2",
+    "type": "choice",
+    "prompt": "Volvimos a casa por la noche. ¡Me ___!",
+    "options": [
+      "encanté",
+      "encantó",
+      "encantaron"
+    ],
+    "answer": 1,
+    "explain": "encantar 只用第三人稱，主詞是「喜歡的東西」：me encantó（那趟旅行讓我很喜歡）；複數東西用 me encantaron。"
   },
   {
     id: 'es-t-e6',
@@ -373,15 +556,6 @@ export const travelExercises = [
     explain: '進行式的 estar 要跟著主詞變，副動詞不變。主詞是兩個人（ellas），所以用 están。（講義・對話 7）',
   },
   {
-    id: 'es-t-e8',
-    level: 'A1',
-    type: 'choice',
-    prompt: 'Pablo dice «Yo pedí una tortilla». Marta le cuenta a otra amiga: «Pablo ___ una tortilla».',
-    options: ['pedí', 'pidió', 'pedió', 'pide'],
-    answer: 1,
-    explain: '轉述「他」做的事要改成第三人稱：pedí → pidió（e→i 變音）。pedió 是常見的錯誤拼法。',
-  },
-  {
     id: 'es-t-e9',
     level: 'A1',
     type: 'choice',
@@ -389,15 +563,6 @@ export const travelExercises = [
     options: ['leendo', 'leyendo', 'leiendo', 'leído'],
     answer: 1,
     explain: '兩個母音中間的 i 會變成 y：leer → leyendo。其他常見不規則副動詞：pedir → pidiendo、dormir → durmiendo、ir → yendo。leído 是過去分詞。',
-  },
-  {
-    id: 'es-t-e10',
-    level: 'A1',
-    type: 'choice',
-    prompt: '«¡Están buenísimos!»（說吉拿棒）這裡的 están 是什麼意思？',
-    options: ['現在進行式「正在…」', '「吃起來／狀態」很好吃', '表示位置「在…」'],
-    answer: 1,
-    explain: 'estar＋形容詞描述當下的狀態或感受，這裡是「吃起來很好吃」，不是進行式（後面沒有副動詞）。',
   },
   {
     id: 'es-t-e11',

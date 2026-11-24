@@ -194,3 +194,42 @@ export function ScenarioGrid({ items, value, onChange, level }) {
     </div>
   );
 }
+
+/** 主題字彙・常用句型卡片（資料：src/data/topic-vocab.js） */
+export function TopicVocab({ groups, idPrefix, speech, lang, rate }) {
+  if (!groups?.length) return null;
+  return (
+    <Card className="px-5 py-4">
+      <h3 className="mb-3 font-bold">主題字彙・常用句型</h3>
+      <div className="grid gap-4 sm:grid-cols-2">
+        {groups.map(([title, items], gi) => (
+          <section key={gi} className="min-w-0">
+            <h4 className="mb-1.5 text-xs font-semibold tracking-wide text-[var(--accent)]">{title}</h4>
+            <ul className="divide-y divide-[var(--border)] rounded-lg border border-[var(--border)]">
+              {items.map(([word, zh], k) => {
+                const id = `${idPrefix}-v${gi}-${k}`;
+                const active = speech.speakingId === id;
+                return (
+                  <li key={k} className={`flex items-center gap-3 px-3 py-2 ${active ? 'bg-[var(--accent-soft)]' : ''}`}>
+                    <SpeakButton
+                      active={active}
+                      disabled={!speech.supported}
+                      label={`朗讀：${word}`}
+                      onClick={() =>
+                        active ? speech.stop() : speech.speak(id, word.replace(/\s[/—]\s/g, ', ').replace(/[()…]/g, ' '), lang, rate)
+                      }
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[15px] font-medium">{word}</p>
+                      <p className="text-sm text-[var(--muted)]">{zh}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </Card>
+  );
+}
