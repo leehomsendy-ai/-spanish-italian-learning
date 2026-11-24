@@ -2,6 +2,46 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useStats } from '../hooks/useStats.js';
 import { RANGES, RULES, accepted, toWords } from '../data/numbers.js';
 import { Card, Feedback, RateToggle, Segmented, SpeakButton, SpeechNotice } from './ui.jsx';
+import { CATEGORIES } from '../data/calendar.js';
+import { load, save } from '../storage.js';
+import CalendarPractice from './Calendar.jsx';
+
+/** 數字・日期頁：切換 數字／星期／月份／四季 */
+export default function Numbers(props) {
+  const { data, speech, rate, setRate } = props;
+  const [category, setCategory] = useState(() => {
+    const c = load('sil-num-cat', 'numbers');
+    return CATEGORIES.some((x) => x.id === c) ? c : 'numbers';
+  });
+  useEffect(() => save('sil-num-cat', category), [category]);
+  useEffect(() => speech.stop(), [category]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return (
+    <div className="space-y-4">
+      <Segmented
+        label="練習類別"
+        value={category}
+        onChange={setCategory}
+        options={CATEGORIES.map((c) => ({ value: c.id, label: c.label }))}
+      />
+      {category === 'numbers' ? (
+        <NumberPractice {...props} />
+      ) : (
+        <div className="space-y-4">
+          <CalendarPractice
+            lang={data.meta.code}
+            category={category}
+            speech={speech}
+            speechLang={data.meta.speechLang}
+            rate={rate}
+            setRate={setRate}
+          />
+          <SpeechNotice speech={speech} lang={data.meta.speechLang} langName={data.meta.nameZh} />
+        </div>
+      )}
+    </div>
+  );
+}
 
 const MODES = [
   { value: 'listen', label: '👂 聽數字', hint: '聽發音，寫出阿拉伯數字' },
@@ -34,7 +74,7 @@ function options(n, range) {
   return [...set].sort(() => Math.random() - 0.5);
 }
 
-export default function Numbers({ data, speech, rate, setRate }) {
+function NumberPractice({ data, speech, rate, setRate }) {
   const lang = data.meta.code;
   const speechLang = data.meta.speechLang;
   const { stats, record, resetSession } = useStats(`${lang}-num`);

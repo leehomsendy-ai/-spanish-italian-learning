@@ -5,7 +5,7 @@ export const MODULES = [
   { id: 'dialogues', label: '情境對話', sub: { es: 'Diálogos', it: 'Dialoghi' }, icon: '💬' },
   { id: 'readings', label: '短文閱讀', sub: { es: 'Lecturas', it: 'Letture' }, icon: '📖' },
   { id: 'verbs', label: '動詞表', sub: { es: 'Verbos', it: 'Verbi' }, icon: '📋' },
-  { id: 'numbers', label: '數字', sub: { es: 'Números', it: 'Numeri' }, icon: '🔢' },
+  { id: 'numbers', label: '數字日期', sub: { es: 'Números y fechas', it: 'Numeri e date' }, icon: '🔢' },
   { id: 'exercises', label: '互動題庫', sub: { es: 'Ejercicios', it: 'Esercizi' }, icon: '✏️' },
 ];
 

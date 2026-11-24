@@ -3,7 +3,10 @@
  * 格式：{ [id]: [[分類標題, [[西／義文, 中文], …]], …] }
  */
 
+import { timeVocab } from './travel-time.js';
+
 export default {
+  ...timeVocab,
   'es-d1': [
     ["飲品 Bebidas", [
       ["una caña", "一杯生啤酒"],

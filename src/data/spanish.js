@@ -23,6 +23,7 @@
  */
 
 import { travelDialogues, travelExercises, verbs } from './spanish-a1-travel.js';
+import { esTimeDialogues } from './travel-time.js';
 
 const spanish = {
   meta: {
@@ -645,6 +646,8 @@ const spanish = {
 
 // 講義「西文A1旅遊對話」：7 段對話、動詞變化表與練習題（見 spanish-a1-travel.js）
 spanish.dialogues.push(...travelDialogues);
+// 旅遊時間對話（時刻表、訂房日期、季節）
+spanish.dialogues.push(...esTimeDialogues);
 spanish.exercises.push(...travelExercises);
 spanish.verbs = verbs;
 

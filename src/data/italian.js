@@ -10,7 +10,9 @@
  *   - 「Esercizi - Verbi essere, avere, -are prime 3 persone, cibo」→ 題庫 it-e5
  */
 
-export default {
+import { itTimeDialogues } from './travel-time.js';
+
+const italian = {
   meta: {
     code: 'it',
     name: 'Italiano',
@@ -519,3 +521,8 @@ export default {
     },
   ],
 };
+
+// 旅遊時間對話（時刻表、訂房日期、季節）
+italian.dialogues.push(...itTimeDialogues);
+
+export default italian;
