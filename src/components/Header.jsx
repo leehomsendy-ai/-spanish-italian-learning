@@ -5,6 +5,7 @@ export const MODULES = [
   { id: 'dialogues', label: '情境對話', sub: { es: 'Diálogos', it: 'Dialoghi' }, icon: '💬' },
   { id: 'readings', label: '短文閱讀', sub: { es: 'Lecturas', it: 'Letture' }, icon: '📖' },
   { id: 'verbs', label: '動詞表', sub: { es: 'Verbos', it: 'Verbi' }, icon: '📋' },
+  { id: 'numbers', label: '數字', sub: { es: 'Números', it: 'Numeri' }, icon: '🔢' },
   { id: 'exercises', label: '互動題庫', sub: { es: 'Ejercicios', it: 'Esercizi' }, icon: '✏️' },
 ];
 
@@ -40,7 +41,7 @@ export default function Header({ lang, setLang, level, setLevel, module, setModu
             />
           </div>
         </div>
-        <nav className="flex gap-1" aria-label="學習模組">
+        <nav className="-mx-4 flex gap-0.5 overflow-x-auto px-4 [scrollbar-width:none] sm:mx-0 sm:gap-1 sm:px-0" aria-label="學習模組">
           {MODULES.map((m) => {
             const active = m.id === module;
             return (
@@ -48,7 +49,7 @@ export default function Header({ lang, setLang, level, setLevel, module, setModu
                 key={m.id}
                 onClick={() => setModule(m.id)}
                 aria-current={active ? 'page' : undefined}
-                className={`flex-1 border-b-2 px-2 pb-2.5 pt-1 text-center transition-colors sm:flex-none sm:px-4 ${
+                className={`flex-1 shrink-0 border-b-2 px-1.5 pb-2.5 pt-1 text-center transition-colors sm:flex-none sm:px-4 ${
                   active
                     ? 'border-[var(--accent)] text-[var(--accent)]'
                     : 'border-transparent text-[var(--muted)] hover:text-[var(--text)]'

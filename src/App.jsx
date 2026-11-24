@@ -7,6 +7,7 @@ import Dialogues from './components/Dialogues.jsx';
 import Readings from './components/Readings.jsx';
 import Exercises from './components/Exercises.jsx';
 import Verbs from './components/Verbs.jsx';
+import Numbers from './components/Numbers.jsx';
 
 const PREFS_KEY = 'sil-prefs';
 const DEFAULT_PREFS = { lang: 'es', level: 'A1', module: 'dialogues', rate: 1 };
@@ -43,6 +44,7 @@ export default function App() {
         {prefs.module === 'dialogues' && <Dialogues key={viewKey} {...common} />}
         {prefs.module === 'readings' && <Readings key={viewKey} {...common} />}
         {prefs.module === 'verbs' && <Verbs key={viewKey} {...common} />}
+        {prefs.module === 'numbers' && <Numbers {...common} />}
         {prefs.module === 'exercises' && <Exercises key={viewKey} data={data} level={prefs.level} />}
       </main>
       <footer className="pb-8 text-center text-xs text-[var(--muted)]">
