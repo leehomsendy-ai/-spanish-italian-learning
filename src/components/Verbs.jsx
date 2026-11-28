@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Card, EmptyState, LevelBadge, ScenarioGrid, SpeakButton, SpeechNotice, sortByLevel } from './ui.jsx';
 
-const SPOKEN = /^(yo|tú|él|nosotros|vosotros|ellos|副動詞|對話例句)/;
+// 會被朗讀的欄位（依表頭判斷）：西／義文人稱變化、副動詞、例句、反身形式
+const SPOKEN = /^(yo|tú|él|nosotros|vosotros|ellos|io|tu|lui|noi|voi|loro|副動詞|對話例句|例句|動詞變化|反身$)/;
+const HAS_CJK = /[\u3400-\u9fff]/;
 
 /** 動詞表：依資料中的 verbs 陣列顯示變化表，點動詞原型可朗讀整列 */
 export default function Verbs({ data, level, speech, rate }) {
@@ -55,7 +57,7 @@ export default function Verbs({ data, level, speech, rate }) {
                   const id = `${topic.id}-${ti}-${ri}`;
                   const active = speech.speakingId === id;
                   // 朗讀：第一欄＋人稱變化／副動詞／例句欄（略過中文說明與「—」）
-                  const spoken = row.filter((c, ci) => (ci === 0 || SPOKEN.test(t.headers[ci])) && c !== '—');
+                  const spoken = row.filter((c, ci) => (ci === 0 || SPOKEN.test(t.headers[ci])) && c !== '—' && !HAS_CJK.test(c));
                   return (
                     <tr key={ri} className={active ? 'bg-[var(--accent-soft)]' : ''}>
                       {row.map((cell, ci) => (

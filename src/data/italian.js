@@ -11,6 +11,7 @@
  */
 
 import { itTimeDialogues } from './travel-time.js';
+import { itReflexiveDialogue, itReflexiveExercises, itReflexiveReading, itReflexiveVerbs } from './italian-riflessivi.js';
 
 const italian = {
   meta: {
@@ -524,5 +525,11 @@ const italian = {
 
 // 旅遊時間對話（時刻表、訂房日期、季節）
 italian.dialogues.push(...itTimeDialogues);
+
+// 主題：反身動詞（雲端硬碟《學會A1-A2作業簿》第 5 課，見 italian-riflessivi.js）
+italian.verbs = [...(italian.verbs || []), ...itReflexiveVerbs];
+italian.dialogues.push(itReflexiveDialogue);
+italian.readings.push(itReflexiveReading);
+italian.exercises.push(...itReflexiveExercises);
 
 export default italian;

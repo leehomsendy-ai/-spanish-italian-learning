@@ -4,9 +4,11 @@
  */
 
 import { timeVocab } from './travel-time.js';
+import { itReflexiveVocab } from './italian-riflessivi.js';
 
 export default {
   ...timeVocab,
+  ...itReflexiveVocab,
   'es-d1': [
     ["飲品 Bebidas", [
       ["una caña", "一杯生啤酒"],
