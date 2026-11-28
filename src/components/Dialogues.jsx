@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Card, EmptyState, LevelBadge, ScenarioGrid, sortByLevel, RateToggle, SpeakButton, SpeechNotice, TopicVocab } from './ui.jsx';
 import topicVocab from '../data/topic-vocab.js';
+import { dialogueAudioUrl } from '../hooks/useSpeech.js';
 
 export default function Dialogues({ data, level, speech, rate, setRate }) {
   const list = sortByLevel(data.dialogues);
@@ -68,6 +69,7 @@ export default function Dialogues({ data, level, speech, rate, setRate }) {
           </button>
         </div>
 
+        <DialogueTrack id={dialogue.id} title={dialogue.title} onPlay={speech.stop} />
         {dialogue.note && (
           <p className="border-b border-[var(--border)] px-5 py-3 text-sm leading-relaxed text-[var(--muted)]">💡 {dialogue.note}</p>
         )}
@@ -191,5 +193,20 @@ function QA({ questions, speech, lang, rate }) {
         })}
       </ol>
     </Card>
+  );
+}
+
+/** 整段對話音檔：播放器＋下載 */
+function DialogueTrack({ id, title, onPlay }) {
+  const src = dialogueAudioUrl(id);
+  if (!src) return null;
+  return (
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-2 border-b border-[var(--border)] px-5 py-3">
+      <span className="text-sm font-semibold text-[var(--accent)]">🎧 整段音檔</span>
+      <audio controls preload="none" src={src} onPlay={onPlay} className="h-9 min-w-0 max-w-full flex-1" />
+      <a href={src} download={`${title}.mp3`} className="text-sm text-[var(--accent)] hover:underline">
+        ⬇ 下載 MP3
+      </a>
+    </div>
   );
 }

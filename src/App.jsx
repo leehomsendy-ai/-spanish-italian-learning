@@ -50,6 +50,8 @@ export default function App() {
       <footer className="pb-8 text-center text-xs text-[var(--muted)]">
         資料檔位於 <code>src/data/</code>，可自行擴充對話、文章與題庫。
         <br />
+        西文講義對話的音檔以 <a className="underline" href="https://github.com/OHF-Voice/piper1-gpl">Piper</a> 語音合成產生（聲音模型 sharvard：Sharvard Corpus，Aubanel 等人，CC BY 3.0；davefx：CC0）。
+        <br />
         版本：{__BUILD__}
       </footer>
     </div>

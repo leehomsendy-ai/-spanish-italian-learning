@@ -216,7 +216,7 @@ export function TopicVocab({ groups, idPrefix, speech, lang, rate }) {
                       disabled={!speech.supported}
                       label={`朗讀：${word}`}
                       onClick={() =>
-                        active ? speech.stop() : speech.speak(id, word.replace(/\s[/—]\s/g, ', ').replace(/[()…]/g, ' '), lang, rate)
+                        active ? speech.stop() : speech.speak(id, word, lang, rate)
                       }
                     />
                     <div className="min-w-0 flex-1">

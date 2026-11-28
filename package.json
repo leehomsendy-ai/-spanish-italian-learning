@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "build:artifact": "vite build && node scripts/build-artifact.mjs"
+    "build:artifact": "VITE_AUDIO_BASE=https://leehomsendy-ai.github.io/-spanish-italian-learning/ vite build && node scripts/build-artifact.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
