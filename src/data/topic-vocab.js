@@ -5,10 +5,12 @@
 
 import { timeVocab } from './travel-time.js';
 import { itReflexiveVocab } from './italian-riflessivi.js';
+import { weatherVocab } from './weather.js';
 
 export default {
   ...timeVocab,
   ...itReflexiveVocab,
+  ...weatherVocab,
   'es-d1': [
     ["飲品 Bebidas", [
       ["una caña", "一杯生啤酒"],

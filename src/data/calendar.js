@@ -8,11 +8,14 @@ export const CATEGORIES = [
   { id: 'days', label: '星期' },
   { id: 'months', label: '月份' },
   { id: 'seasons', label: '四季' },
+  { id: 'weather', label: '天氣' },
 ];
 
 const ZH_DAYS = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
 const ZH_MONTHS = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
 const ZH_SEASONS = ['春天', '夏天', '秋天', '冬天'];
+
+const ZH_WEATHER = ['☀️ 出太陽', '🥵 很熱', '🥶 很冷', '🌬️ 颳風', '😊 天氣好', '🌧️ 天氣不好', '☔ 下雨', '❄️ 下雪', '☁️ 陰天／多雲', '🌫️ 起霧', '⛈️ 雷雨', '🍃 涼爽', '🌀 颱風'];
 
 const zip = (words, zh) => words.map((w, i) => (typeof w === 'string' ? { w, zh: zh[i] } : { ...w, zh: zh[i] }));
 
@@ -32,6 +35,14 @@ export const WORDS = {
       ],
       ZH_SEASONS,
     ),
+    weather: zip(
+      [
+        'Hace sol.', 'Hace calor.', 'Hace frío.', 'Hace viento.', 'Hace buen tiempo.', 'Hace mal tiempo.',
+        { w: 'Llueve.', alt: ['Está lloviendo.'] }, { w: 'Nieva.', alt: ['Está nevando.'] },
+        'Está nublado.', 'Hay niebla.', 'Hay tormenta.', 'Hace fresco.', 'Hay un tifón.',
+      ],
+      ZH_WEATHER,
+    ),
   },
   it: {
     days: zip(['lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato', 'domenica'], ZH_DAYS),
@@ -47,6 +58,14 @@ export const WORDS = {
         { w: "l'inverno", alt: ['inverno', 'l’inverno'], note: '12–2 月' },
       ],
       ZH_SEASONS,
+    ),
+    weather: zip(
+      [
+        "C'è il sole.", 'Fa caldo.', 'Fa freddo.', "C'è vento.", 'Fa bel tempo.', 'Fa brutto tempo.',
+        { w: 'Piove.', alt: ["C'è la pioggia.", "C'è pioggia."] }, 'Nevica.',
+        { w: 'È nuvoloso.', alt: ['Il cielo è nuvoloso.'] }, "C'è la nebbia.", "C'è un temporale.", 'Fa fresco.', "C'è un tifone.",
+      ],
+      ZH_WEATHER,
     ),
   },
 };
@@ -99,6 +118,25 @@ export const CAL_RULES = {
         ['En invierno hace frío y nieva.', '冬天很冷，會下雪。'],
       ],
     },
+    weather: {
+      tips: [
+        '問天氣：¿Qué tiempo hace?（天氣怎麼樣？）',
+        'hacer＋名詞：hace sol、hace calor、hace frío、hace viento、hace buen／mal tiempo。',
+        '「很熱」說 hace mucho calor（calor 是名詞，用 mucho，不說 muy calor）。',
+        'estar＋形容詞：está nublado（陰天）；正在下：está lloviendo、está nevando。',
+        'hay＋名詞：hay niebla（起霧）、hay tormenta（暴風雨）。',
+        'llover、nevar 只用第三人稱單數：llueve（o→ue）、nieva（e→ie）。',
+        '溫度：Estamos a veinte grados.／Hace veinte grados.（20 度）',
+      ],
+      phrases: [
+        ['¿Qué tiempo hace hoy?', '今天天氣怎麼樣？'],
+        ['¿A cuántos grados estamos?', '現在幾度？'],
+        ['Estamos a veinticinco grados.', '現在二十五度。'],
+        ['Hace mucho calor.', '非常熱。'],
+        ['Mañana va a llover.', '明天會下雨。'],
+        ['¿Qué dice el pronóstico?', '天氣預報怎麼說？'],
+      ],
+    },
   },
   it: {
     days: {
@@ -142,6 +180,24 @@ export const CAL_RULES = {
         ['Mi piace la primavera.', '我喜歡春天。'],
         ["D'estate fa molto caldo.", '夏天很熱。'],
         ['In inverno fa freddo e nevica.', '冬天很冷，會下雪。'],
+      ],
+    },
+    weather: {
+      tips: [
+        '問天氣：Che tempo fa?（課堂筆記）',
+        'fare＋形容詞：fa caldo、fa freddo、fa fresco、fa bel／brutto tempo。課堂上說的 «oggi è caldo» 是口語，標準說法是 fa caldo。',
+        "c'è＋名詞：c'è il sole、c'è vento、c'è la nebbia、c'è un temporale、c'è un tifone。",
+        '形容天空用 essere：è nuvoloso（多雲）、è sereno（晴朗）。',
+        "piovere、nevicare 只用第三人稱單數：piove、nevica。課堂筆記：piove = c'è pioggia。",
+        '溫度：Quanti gradi ci sono? → Ci sono trenta gradi.（課堂筆記：quanti gradi?）',
+      ],
+      phrases: [
+        ['Che tempo fa oggi?', '今天天氣怎麼樣？'],
+        ['Quanti gradi ci sono?', '幾度？'],
+        ['Ci sono trenta gradi.', '三十度。'],
+        ['Fa molto caldo.', '非常熱。'],
+        ['Domani piove.', '明天會下雨。'],
+        ['Martedì prossimo arriva un tifone.', '下星期二颱風要來。'],
       ],
     },
   },

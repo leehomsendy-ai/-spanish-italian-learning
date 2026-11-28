@@ -11,6 +11,7 @@
  */
 
 import { itTimeDialogues } from './travel-time.js';
+import { weatherDialogues, weatherExercises, weatherReadings } from './weather.js';
 import { itReflexiveDialogue, itReflexiveExercises, itReflexiveReading, itReflexiveVerbs } from './italian-riflessivi.js';
 
 const italian = {
@@ -531,5 +532,10 @@ italian.verbs = [...(italian.verbs || []), ...itReflexiveVerbs];
 italian.dialogues.push(itReflexiveDialogue);
 italian.readings.push(itReflexiveReading);
 italian.exercises.push(...itReflexiveExercises);
+
+// 主題：天氣（見 weather.js；句子部分取自課堂筆記）
+italian.dialogues.push(weatherDialogues.it);
+italian.readings.push(weatherReadings.it);
+italian.exercises.push(...weatherExercises.it);
 
 export default italian;

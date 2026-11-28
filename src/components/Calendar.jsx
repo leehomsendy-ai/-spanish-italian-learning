@@ -5,12 +5,12 @@ import { Card, Feedback, RateToggle, Segmented, SpeakButton } from './ui.jsx';
 
 const MODES = [
   { value: 'listen', label: '👂 聽音選義', hint: '聽發音，選出中文意思' },
-  { value: 'spell', label: '✍️ 看中文拼寫', hint: '看中文，拼出單字（冠詞可寫可不寫）' },
+  { value: 'spell', label: '✍️ 看中文拼寫', hint: '看中文，拼出單字或句子（季節的冠詞、句尾標點可寫可不寫）' },
   { value: 'read', label: '📖 看字選義', hint: '看單字，選出中文意思' },
 ];
 const ACCENTS = { es: ['á', 'é', 'í', 'ó', 'ú', 'ñ'], it: ['ì', 'è', 'é', 'à', 'ò', "'"] };
 
-const norm = (s) => s.trim().toLowerCase().replace(/’/g, "'").replace(/\s+/g, ' ');
+const norm = (s) => s.trim().toLowerCase().replace(/’/g, "'").replace(/[.!?¡¿]/g, '').replace(/\s+/g, ' ').trim();
 const noAccent = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '');
 const shuffle = (a) => [...a].sort(() => Math.random() - 0.5);
 
@@ -169,7 +169,7 @@ function SpellQ({ item, lang, done, onSubmit }) {
     e.preventDefault();
     if (done || !value.trim()) return;
     const v = norm(value);
-    if (answers.includes(v)) onSubmit(true, /^[A-ZÁÉÍÓÚ]/.test(value.trim()) ? '💡 星期、月份、季節通常小寫。' : null);
+    if (answers.includes(v)) onSubmit(true, /^[a-z]/.test(item.w) && /^[A-ZÁÉÍÓÚ]/.test(value.trim()) ? '💡 星期、月份、季節通常小寫。' : null);
     else if (answers.some((a) => noAccent(a) === noAccent(v))) onSubmit(true, '⚠️ 拼字正確，但請注意重音符號。');
     else onSubmit(false, `你的答案：${value.trim()}`);
   };

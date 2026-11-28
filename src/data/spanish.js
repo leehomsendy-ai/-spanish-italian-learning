@@ -24,6 +24,7 @@
 
 import { travelDialogues, travelExercises, verbs } from './spanish-a1-travel.js';
 import { esTimeDialogues } from './travel-time.js';
+import { weatherDialogues, weatherExercises, weatherReadings } from './weather.js';
 
 const spanish = {
   meta: {
@@ -648,6 +649,11 @@ const spanish = {
 spanish.dialogues.push(...travelDialogues);
 // 旅遊時間對話（時刻表、訂房日期、季節）
 spanish.dialogues.push(...esTimeDialogues);
+
+// 主題：天氣（見 weather.js）
+spanish.dialogues.push(weatherDialogues.es);
+spanish.readings.push(weatherReadings.es);
+spanish.exercises.push(...weatherExercises.es);
 spanish.exercises.push(...travelExercises);
 spanish.verbs = verbs;
 

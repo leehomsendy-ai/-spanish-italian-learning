@@ -17,15 +17,23 @@ os.makedirs(out_dir, exist_ok=True)
 manifest_path = os.path.join('src', 'data', 'audio-manifest.json')
 manifest = json.load(open(manifest_path, encoding='utf-8')) if os.path.exists(manifest_path) else {}
 
-SHARVARD = os.path.join(voices_dir, 'es_ES-sharvard-medium.onnx')
-DAVEFX = os.path.join(voices_dir, 'es_ES-davefx-medium.onnx')
-# 聲音設定：(模型, speaker, 音高倍率)
-VOICES = {
-    'F': (SHARVARD, 1, 1.0),
-    'F2': (SHARVARD, 1, 0.9),  # 第二位女性：音高降低約 10%，速度不變
-    'M': (SHARVARD, 0, 1.0),
-    'M2': (DAVEFX, None, 1.0),
+V = lambda name: os.path.join(voices_dir, name + '.onnx')
+# 聲音設定：(模型, speaker, 音高倍率)；F2 = 第二位女性，音高降低約 10%，速度不變
+VOICE_SETS = {
+    'es': {  # sharvard：CC BY 3.0（Sharvard Corpus）；davefx：CC0
+        'F': (V('es_ES-sharvard-medium'), 1, 1.0),
+        'F2': (V('es_ES-sharvard-medium'), 1, 0.9),
+        'M': (V('es_ES-sharvard-medium'), 0, 1.0),
+        'M2': (V('es_ES-davefx-medium'), None, 1.0),
+    },
+    'it': {  # paola：CC0；riccardo：M-AILABS Speech Dataset
+        'F': (V('it_IT-paola-medium'), None, 1.0),
+        'F2': (V('it_IT-paola-medium'), None, 0.9),
+        'M': (V('it_IT-riccardo-x_low'), None, 1.0),
+        'M2': (V('it_IT-riccardo-x_low'), None, 1.1),
+    },
 }
+VOICES = VOICE_SETS[lang]
 
 def fname(text, voice):
     return hashlib.sha1(f'{lang}|{voice}|{text}'.encode()).hexdigest()[:12] + '.mp3'
@@ -35,13 +43,18 @@ def synth(text, voice, dest):
     with tempfile.TemporaryDirectory() as tmp:
         wav = os.path.join(tmp, 'a.wav')
         cmd = [sys.executable, '-m', 'piper', '-m', model, '-f', wav]
+        rate = 22050 if 'x_low' not in model else 16000
         if spk is not None:
             cmd += ['--speaker', str(spk)]
+        if len(text.split()) <= 3:  # 短詞放慢一點，比較清楚
+            cmd += ['--length-scale', '1.15']
         subprocess.run(cmd, input=text.encode(), check=True, capture_output=True)
-        af = 'silenceremove=start_periods=1:start_threshold=-50dB,areverse,silenceremove=start_periods=1:start_threshold=-50dB,areverse'
+        # 去掉頭尾靜音，但保留 0.12 秒，避免切掉 f、s 這類輕聲的開頭
+        trim = 'silenceremove=start_periods=1:start_threshold=-60dB:start_silence=0.12'
+        af = f'{trim},areverse,{trim},areverse'
         if pitch != 1.0:
-            af = f'asetrate=22050*{pitch},aresample=22050,atempo={1 / pitch:.4f},' + af
-        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', wav, '-af', af, '-ac', '1', '-b:a', '48k', dest], check=True)
+            af = f'asetrate={rate}*{pitch},aresample={rate},atempo={1 / pitch:.4f},' + af
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', wav, '-af', af, '-ac', '1', '-ar', '22050', '-b:a', '48k', dest], check=True)
 
 # ---- 品質檢查：用 Whisper 把音檔轉回文字，與原文比對；不理想就重新合成（最多 4 次，取最好的一次）
 import difflib, re, shutil, unicodedata
@@ -65,14 +78,30 @@ def num_es(n):
     if n < 1000: return H[n // 100] + ('' if n % 100 == 0 else ' ' + num_es(n % 100))
     return str(n)
 
+IU = ['zero', 'uno', 'due', 'tre', 'quattro', 'cinque', 'sei', 'sette', 'otto', 'nove', 'dieci', 'undici', 'dodici',
+      'tredici', 'quattordici', 'quindici', 'sedici', 'diciassette', 'diciotto', 'diciannove']
+IT_T = ['', '', 'venti', 'trenta', 'quaranta', 'cinquanta', 'sessanta', 'settanta', 'ottanta', 'novanta']
+
+def num_it(n):
+    if n < 20: return IU[n]
+    if n < 100:
+        t, u = IT_T[n // 10], n % 10
+        if u in (1, 8): t = t[:-1]
+        return t + ('' if u == 0 else ('tre' if u == 3 else IU[u]))
+    if n < 1000:
+        return ('cento' if n // 100 == 1 else IU[n // 100] + 'cento') + ('' if n % 100 == 0 else num_it(n % 100))
+    return str(n)
+
 def words(s):
-    s = re.sub(r'\d+', lambda m: num_es(int(m.group())), s.lower())
+    conv = num_it if lang == 'it' else num_es
+    s = re.sub(r'\d+', lambda m: conv(int(m.group())), s.lower())
     s = unicodedata.normalize('NFD', s).encode('ascii', 'ignore').decode()
     return re.sub(r'[^a-z0-9 ]', ' ', s).split()
 
 def score(path, text):
     if not ASR: return 1.0
-    raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', path, '-ar', '16000', '-ac', '1', '-f', 's16le', '-'], capture_output=True).stdout
+    # 前後補 0.5 秒靜音，Whisper 對極短的音檔才不會亂猜
+    raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', path, '-af', 'adelay=500|500,apad=pad_dur=0.5', '-ar', '16000', '-ac', '1', '-f', 's16le', '-'], capture_output=True).stdout
     segs, _ = ASR.transcribe(np.frombuffer(raw, np.int16).astype(np.float32) / 32768, language=lang)
     return difflib.SequenceMatcher(None, words(text), words(' '.join(x.text for x in segs))).ratio()
 
